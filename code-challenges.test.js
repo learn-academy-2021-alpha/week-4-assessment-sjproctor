@@ -18,19 +18,25 @@
 
 // a) Create a test with an expect statement using the variable provided.
 
-var colors1 = ["purple", "blue", "green", "yellow", "pink"]
-// Expected output example (can be a different order): ["yellow", "blue", "pink", "green"]
-var colors2 = ["chartreuse", "indigo", "periwinkle", "ochre", "aquamarine", "saffron"]
-// Expected output example (can be a different order): ["saffron", "aquamarine", "periwinkle", "indigo", "ochre"]
+describe("shuffle", () => {
+  var colors1 = ["purple", "blue", "green", "yellow", "pink"]
+  var output1 = [...colors1.slice(1)].sort()
+  var colors2 = ["chartreuse", "indigo", "periwinkle", "ochre", "aquamarine", "saffron"]
+  var output2 = [...colors2.slice(1)].sort()
 
-
-
+  test("returns a shortened and shuffled array", () => {
+    expect(shuffle(colors1).sort()).toEqual(output1)
+    expect(shuffle(colors2).sort()).toEqual(output2)
+  })
+})
 
 
 // b) Create the function that makes the test pass.
 
-
-
+const shuffle = (array) => {
+  console.log(array)
+  return array.slice(1).sort(() => Math.random() - 0.5)
+}
 
 
 // --------------------2) Create a function that takes in an array of numbers and returns the sum of all the numbers cubed.
